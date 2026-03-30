@@ -33,7 +33,7 @@ const Footer = () => {
             <img 
               src={logo} 
               alt="Sultan Logo" 
-              className="h-16 w-auto object-contain mb-4"
+              className="h-24 w-auto object-contain mb-4"
             />
             <p className="text-gray-300 mb-6 leading-relaxed">
               Passionate about creating exceptional digital experiences through innovative 

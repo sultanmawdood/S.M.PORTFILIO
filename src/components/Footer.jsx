@@ -1,6 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { FiHeart, FiGithub, FiLinkedin, FiTwitter, FiMail } from 'react-icons/fi'
+import logo from '../images/Logo.png.png'
 
 const Footer = () => {
   const quickLinks = [
@@ -15,7 +16,7 @@ const Footer = () => {
   const socialLinks = [
     { icon: FiGithub, href: 'https://github.com/sultanmawdood', label: 'GitHub' },
     { icon: FiLinkedin, href: 'https://www.linkedin.com/in/sultanmawdood-fawzi', label: 'LinkedIn' },
-    { icon: FiMail, href: 'sultanmawdoodfawzi@gmail.com', label: 'Email' }
+    { icon: FiMail, href: 'mailto:sultanmawdoodfawzi@gmail.com', label: 'Email' }
   ]
 
   return (
@@ -29,9 +30,11 @@ const Footer = () => {
             transition={{ duration: 0.6 }}
             className="md:col-span-2"
           >
-            <h3 className="text-2xl font-bold mb-4">
-              <span className="text-cyan-400">Frontend Developer</span>
-            </h3>
+            <img 
+              src={logo} 
+              alt="Sultan Logo" 
+              className="h-16 w-auto object-contain mb-4"
+            />
             <p className="text-gray-300 mb-6 leading-relaxed">
               Passionate about creating exceptional digital experiences through innovative 
               web technologies. Specializing in React, Three.js, and modern frontend development.

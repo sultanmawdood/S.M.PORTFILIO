@@ -87,7 +87,7 @@ const About = () => {
               </div>
               
               <p className="text-xl text-gray-300 leading-relaxed mb-8 max-w-lg">
-                Passionate frontend developer with 5+ years of experience creating exceptional digital experiences. 
+                Passionate frontend developer with 2+ years of experience creating exceptional digital experiences. 
                 Specialized in React ecosystem, 3D web development, and modern UI/UX design principles.
               </p>
               

@@ -30,7 +30,7 @@ const Contact = () => {
 
   const socialLinks = [
     { icon: FiGithub, href: 'https://github.com/sultanmawdood', label: 'GitHub' },
-    { icon: FiLinkedin, href: 'https://www.linkedin.com/in/sultanmawdood-fawzi', label: 'LinkedIn' },
+    { icon: FiLinkedin, href: 'https://www.linkedin.com/in/sultanmawdood-fawzi', label: 'LinkedIn' }
   ]
 
   const responseTime = [

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { HiMenu, HiX } from 'react-icons/hi'
 import { FiHome, FiUser, FiCode, FiBriefcase, FiFolder, FiMail } from 'react-icons/fi'
+import logo from '../images/Logo.png.png'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -59,23 +60,17 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
-          <motion.div
+          <motion.a
+            href="#/"
             whileHover={{ scale: 1.05 }}
             className="flex items-center cursor-pointer"
           >
-            <div className="relative">
-              <div className="w-12 h-12 bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
-                <span className="text-white font-bold text-xl">S</span>
-              </div>
-              <div className="absolute -top-1 -right-1 w-4 h-4 bg-green-400 rounded-full border-2 border-black animate-pulse"></div>
-            </div>
-            <div className="ml-3">
-              <span className="text-xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
-                Sultan
-              </span>
-              <p className="text-xs text-gray-400 -mt-1">Developer</p>
-            </div>
-          </motion.div>
+            <img 
+              src={logo} 
+              alt="Sultan Logo" 
+              className="h-12 w-auto object-contain"
+            />
+          </motion.a>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-1">

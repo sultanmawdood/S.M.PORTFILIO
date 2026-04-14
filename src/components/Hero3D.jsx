@@ -78,17 +78,18 @@ const Hero3D = () => {
 
           {/* Right Side - Hero Image */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
+            animate={{ opacity: 1, scale: 1, rotate: 0 }}
             transition={{ duration: 1, delay: 0.3 }}
             className="hidden lg:flex justify-center items-center relative"
           >
             <motion.div
               animate={{ 
-                y: [0, -20, 0],
+                y: [0, -30, 0],
+                rotate: [0, 5, -5, 0],
               }}
               transition={{ 
-                duration: 3,
+                duration: 4,
                 repeat: Infinity,
                 ease: "easeInOut"
               }}
@@ -97,41 +98,92 @@ const Hero3D = () => {
               {/* Glowing background effect */}
               <motion.div
                 animate={{
-                  scale: [1, 1.2, 1],
-                  opacity: [0.3, 0.6, 0.3],
+                  scale: [1, 1.3, 1],
+                  opacity: [0.4, 0.7, 0.4],
+                  rotate: [0, 180, 360],
                 }}
                 transition={{
-                  duration: 3,
+                  duration: 4,
                   repeat: Infinity,
                 }}
-                className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full blur-3xl"
+                className="absolute inset-0 bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 rounded-full blur-3xl"
               />
               
-              {/* Image */}
+              {/* Rotating ring */}
+              <motion.div
+                animate={{
+                  rotate: [0, 360],
+                  scale: [1, 1.1, 1],
+                }}
+                transition={{
+                  duration: 8,
+                  repeat: Infinity,
+                  ease: "linear"
+                }}
+                className="absolute inset-0 border-4 border-cyan-400/30 rounded-full"
+                style={{ width: '110%', height: '110%', left: '-5%', top: '-5%' }}
+              />
+              
+              {/* Image with multiple animations */}
               <motion.img
                 src={heroImage}
                 alt="Portfolio Hero"
                 className="relative z-10 w-96 h-96 object-contain drop-shadow-2xl"
-                whileHover={{ scale: 1.05, rotate: 5 }}
-                transition={{ duration: 0.3 }}
+                animate={{
+                  scale: [1, 1.05, 1],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+                whileHover={{ 
+                  scale: 1.1, 
+                  rotate: [0, -5, 5, -5, 0],
+                  transition: { duration: 0.5 }
+                }}
               />
               
-              {/* Floating particles */}
-              {[...Array(8)].map((_, i) => (
+              {/* Orbiting particles */}
+              {[...Array(12)].map((_, i) => (
                 <motion.div
                   key={i}
-                  className="absolute w-3 h-3 bg-cyan-400 rounded-full"
+                  className="absolute w-4 h-4 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full"
                   style={{
-                    left: `${Math.random() * 100}%`,
-                    top: `${Math.random() * 100}%`,
+                    left: '50%',
+                    top: '50%',
                   }}
                   animate={{
-                    y: [0, -40, 0],
+                    x: [0, Math.cos((i * 30 * Math.PI) / 180) * 200],
+                    y: [0, Math.sin((i * 30 * Math.PI) / 180) * 200],
                     opacity: [0, 1, 0],
                     scale: [0, 1.5, 0],
                   }}
                   transition={{
-                    duration: 2 + Math.random() * 2,
+                    duration: 3,
+                    repeat: Infinity,
+                    delay: i * 0.2,
+                    ease: "easeInOut"
+                  }}
+                />
+              ))}
+              
+              {/* Floating sparkles */}
+              {[...Array(6)].map((_, i) => (
+                <motion.div
+                  key={`sparkle-${i}`}
+                  className="absolute w-2 h-2 bg-yellow-300 rounded-full"
+                  style={{
+                    left: `${20 + Math.random() * 60}%`,
+                    top: `${20 + Math.random() * 60}%`,
+                  }}
+                  animate={{
+                    scale: [0, 1, 0],
+                    opacity: [0, 1, 0],
+                    rotate: [0, 180, 360],
+                  }}
+                  transition={{
+                    duration: 2 + Math.random(),
                     repeat: Infinity,
                     delay: Math.random() * 2,
                   }}

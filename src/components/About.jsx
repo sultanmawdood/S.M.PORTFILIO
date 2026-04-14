@@ -14,7 +14,7 @@ const About = () => {
   ]
 
   const highlights = [
-    'Expert in React, , and modern JavaScript frameworks',
+    'Expert in React and modern JavaScript frameworks',
     'Specialized in creating immersive 3D web experiences',
     'Proficient in full-stack development with Node.js and databases',
     'Strong focus on performance optimization and accessibility',
@@ -92,15 +92,21 @@ const About = () => {
               </p>
               
               <div className="flex gap-4">
-                <button className="px-8 py-3 bg-gradient-to-r from-cyan-400 to-purple-400 text-black font-semibold rounded hover:shadow-lg hover:shadow-cyan-400/25 transition-all">
+                <a
+                  href="#/projects"
+                  className="px-8 py-3 bg-gradient-to-r from-cyan-400 to-purple-400 text-black font-semibold rounded hover:shadow-lg hover:shadow-cyan-400/25 transition-all"
+                >
                   Explore Work
-                </button>
-                <button className="px-8 py-3 border border-cyan-400 text-cyan-400 font-semibold rounded hover:bg-cyan-400 hover:text-black transition-all flex items-center gap-2">
+                </a>
+                <a
+                  href="#/projects"
+                  className="px-8 py-3 border border-cyan-400 text-cyan-400 font-semibold rounded hover:bg-cyan-400 hover:text-black transition-all flex items-center gap-2"
+                >
                   <span className="w-4 h-4 bg-cyan-400 rounded-full flex items-center justify-center">
                     <span className="w-0 h-0 border-l-2 border-l-black border-y-transparent border-y-2 ml-0.5"></span>
                   </span>
                   View Projects
-                </button>
+                </a>
               </div>
             </div>
           </motion.div>

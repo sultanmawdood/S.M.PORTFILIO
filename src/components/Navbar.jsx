@@ -1,40 +1,46 @@
 import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { HiMenu, HiX } from 'react-icons/hi'
-import { FiHome, FiUser, FiCode, FiBriefcase, FiFolder, FiMail } from 'react-icons/fi'
+import { FiHome, FiUser, FiCode, FiBriefcase, FiFolder, FiMail, FiSun, FiMoon } from 'react-icons/fi'
 import logo from '../images/Logo.png.png'
+import { useTheme } from '../context/ThemeContext'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [activeItem, setActiveItem] = useState('Home')
+  const { theme, toggleTheme } = useTheme()
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50)
     }
-    
-    // Set active item based on current route
-    const currentPath = window.location.hash
-    if (currentPath === '#/' || currentPath === '') {
-      setActiveItem('Home')
-    } else if (currentPath === '#/about') {
-      setActiveItem('About')
-    } else if (currentPath === '#/skills') {
-      setActiveItem('Skills')
-    } else if (currentPath === '#/services') {
-      setActiveItem('Services')
-    } else if (currentPath === '#/projects') {
-      setActiveItem('Projects')
-    } else if (currentPath === '#/contact') {
-      setActiveItem('Contact')
+
+    const handleHashChange = () => {
+      const currentPath = window.location.hash
+      if (currentPath === '#/' || currentPath === '') {
+        setActiveItem('Home')
+      } else if (currentPath === '#/about') {
+        setActiveItem('About')
+      } else if (currentPath === '#/skills') {
+        setActiveItem('Skills')
+      } else if (currentPath === '#/services') {
+        setActiveItem('Services')
+      } else if (currentPath === '#/projects') {
+        setActiveItem('Projects')
+      } else if (currentPath === '#/contact') {
+        setActiveItem('Contact')
+      }
     }
-    
+
+    handleScroll()
+    handleHashChange()
+
     window.addEventListener('scroll', handleScroll)
-    window.addEventListener('hashchange', handleScroll)
+    window.addEventListener('hashchange', handleHashChange)
     return () => {
       window.removeEventListener('scroll', handleScroll)
-      window.removeEventListener('hashchange', handleScroll)
+      window.removeEventListener('hashchange', handleHashChange)
     }
   }, [])
 
@@ -99,7 +105,15 @@ const Navbar = () => {
           </div>
 
           {/* CTA Button */}
-          <div className="hidden md:block">
+          <div className="hidden md:flex items-center gap-4">
+            <motion.button
+              onClick={toggleTheme}
+              whileHover={{ scale: 1.1, rotate: 180 }}
+              whileTap={{ scale: 0.9 }}
+              className="p-3 glass rounded-xl text-cyan-400 hover:text-white transition-colors"
+            >
+              {theme === 'dark' ? <FiSun size={20} /> : <FiMoon size={20} />}
+            </motion.button>
             <motion.a
               href="#/contact"
               whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(6, 182, 212, 0.4)' }}
@@ -160,6 +174,18 @@ const Navbar = () => {
                   </motion.a>
                 )
               })}
+            </div>
+            
+            <div className="flex gap-2 mt-4">
+              <motion.button
+                onClick={toggleTheme}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+                className="flex-1 py-3 glass rounded-xl text-cyan-400 hover:text-white transition-colors flex items-center justify-center gap-2"
+              >
+                {theme === 'dark' ? <><FiSun size={20} /> Light</> : <><FiMoon size={20} /> Dark</>}
+              </motion.button>
             </div>
             
             <motion.a

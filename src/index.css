@@ -17,8 +17,39 @@ body {
   background: #0a0a0a;
   color: #ffffff;
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Light Mode */
+html:not(.dark) body {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  color: #1a202c;
+}
+
+html:not(.dark) .glass {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+html:not(.dark) .text-white {
+  color: #1a202c !important;
+}
+
+html:not(.dark) .text-gray-300 {
+  color: #4a5568 !important;
+}
+
+html:not(.dark) .text-gray-400 {
+  color: #718096 !important;
+}
+
+html:not(.dark) .bg-black\/60,
+html:not(.dark) .bg-black\/95 {
+  background: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Dark Mode */
 .glass {
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);

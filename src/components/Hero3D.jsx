@@ -2,6 +2,7 @@ import React, { Suspense } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { motion } from 'framer-motion'
 import Scene from './3d/Scene'
+import Robot from './Robot'
 
 const Hero3D = () => {
   return (
@@ -16,60 +17,75 @@ const Hero3D = () => {
       </div>
 
       {/* Content Overlay */}
-      <div className="relative z-10 text-center px-4">
-        <motion.h1
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          className="text-6xl md:text-8xl font-bold mb-6"
-        >
-          <div className="text-cyan-400 text-6xl md:text-8xl font-bold mb-4">Frontend</div>
-          <div className="text-white text-6xl md:text-8xl font-bold">Developer</div>
-        </motion.h1>
+      <div className="relative z-10 px-4 max-w-7xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left Side - Text Content */}
+          <div className="text-center lg:text-left">
+            <motion.h1
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
+              className="text-6xl md:text-8xl font-bold mb-6"
+            >
+              <div className="text-cyan-400 text-6xl md:text-8xl font-bold mb-4">Frontend</div>
+              <div className="text-white text-6xl md:text-8xl font-bold">Developer</div>
+            </motion.h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.3 }}
-          className="text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl mx-auto"
-        >
-          Passionate Frontend Developer specializing in React, Three.js, and modern web technologies. 
-          Creating stunning, interactive digital experiences that captivate users and drive results.
-        </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.3 }}
+              className="text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl mx-auto lg:mx-0"
+            >
+              Passionate Frontend Developer specializing in React, Three.js, and modern web technologies. 
+              Creating stunning, interactive digital experiences that captivate users and drive results.
+            </motion.p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.6 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center"
-        >
-          <motion.button
-            onClick={() => {
-              const element = document.querySelector('#projects')
-              if (element) {
-                element.scrollIntoView({ behavior: 'smooth' })
-              }
-            }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-8 py-3 glass rounded-full text-white hover:bg-cyan-500/20 transition-all duration-300 cursor-pointer"
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.6 }}
+              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+            >
+              <motion.button
+                onClick={() => {
+                  const element = document.querySelector('#projects')
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' })
+                  }
+                }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-8 py-3 glass rounded-full text-white hover:bg-cyan-500/20 transition-all duration-300 cursor-pointer"
+              >
+                View Projects
+              </motion.button>
+              <motion.button
+                onClick={() => {
+                  const element = document.querySelector('#contact')
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' })
+                  }
+                }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-8 py-3 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full text-white hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 cursor-pointer"
+              >
+                Contact Me
+              </motion.button>
+            </motion.div>
+          </div>
+
+          {/* Right Side - Robot Animation */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.3 }}
+            className="hidden lg:flex justify-center items-center"
           >
-            View Projects
-          </motion.button>
-          <motion.button
-            onClick={() => {
-              const element = document.querySelector('#contact')
-              if (element) {
-                element.scrollIntoView({ behavior: 'smooth' })
-              }
-            }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-8 py-3 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full text-white hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 cursor-pointer"
-          >
-            Contact Me
-          </motion.button>
-        </motion.div>
+            <Robot />
+          </motion.div>
+        </div>
       </div>
 
       {/* Scroll Indicator */}

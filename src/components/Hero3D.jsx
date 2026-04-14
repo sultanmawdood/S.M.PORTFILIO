@@ -2,7 +2,7 @@ import React, { Suspense } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { motion } from 'framer-motion'
 import Scene from './3d/Scene'
-import Robot from './Robot'
+import heroImage from '../images/portfilo.png'
 
 const Hero3D = () => {
   return (
@@ -76,14 +76,68 @@ const Hero3D = () => {
             </motion.div>
           </div>
 
-          {/* Right Side - Robot Animation */}
+          {/* Right Side - Hero Image */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.3 }}
-            className="hidden lg:flex justify-center items-center"
+            className="hidden lg:flex justify-center items-center relative"
           >
-            <Robot />
+            <motion.div
+              animate={{ 
+                y: [0, -20, 0],
+              }}
+              transition={{ 
+                duration: 3,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+              className="relative"
+            >
+              {/* Glowing background effect */}
+              <motion.div
+                animate={{
+                  scale: [1, 1.2, 1],
+                  opacity: [0.3, 0.6, 0.3],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                }}
+                className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full blur-3xl"
+              />
+              
+              {/* Image */}
+              <motion.img
+                src={heroImage}
+                alt="Portfolio Hero"
+                className="relative z-10 w-96 h-96 object-contain drop-shadow-2xl"
+                whileHover={{ scale: 1.05, rotate: 5 }}
+                transition={{ duration: 0.3 }}
+              />
+              
+              {/* Floating particles */}
+              {[...Array(8)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  className="absolute w-3 h-3 bg-cyan-400 rounded-full"
+                  style={{
+                    left: `${Math.random() * 100}%`,
+                    top: `${Math.random() * 100}%`,
+                  }}
+                  animate={{
+                    y: [0, -40, 0],
+                    opacity: [0, 1, 0],
+                    scale: [0, 1.5, 0],
+                  }}
+                  transition={{
+                    duration: 2 + Math.random() * 2,
+                    repeat: Infinity,
+                    delay: Math.random() * 2,
+                  }}
+                />
+              ))}
+            </motion.div>
           </motion.div>
         </div>
       </div>

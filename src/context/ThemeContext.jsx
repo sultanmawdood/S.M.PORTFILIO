@@ -18,10 +18,14 @@ export const ThemeProvider = ({ children }) => {
 
   useEffect(() => {
     localStorage.setItem('theme', theme)
+    const root = document.documentElement
+    
     if (theme === 'dark') {
-      document.documentElement.classList.add('dark')
+      root.classList.add('dark')
+      root.style.colorScheme = 'dark'
     } else {
-      document.documentElement.classList.remove('dark')
+      root.classList.remove('dark')
+      root.style.colorScheme = 'light'
     }
   }, [theme])
 

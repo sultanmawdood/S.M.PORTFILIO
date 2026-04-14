@@ -108,11 +108,24 @@ const Navbar = () => {
           <div className="hidden md:flex items-center gap-4">
             <motion.button
               onClick={toggleTheme}
-              whileHover={{ scale: 1.1, rotate: 180 }}
+              whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              className="p-3 glass rounded-xl text-cyan-400 hover:text-white transition-colors"
+              className="relative p-3 glass rounded-xl overflow-hidden group"
             >
-              {theme === 'dark' ? <FiSun size={20} /> : <FiMoon size={20} />}
+              <motion.div
+                animate={{ rotate: theme === 'dark' ? 0 : 180 }}
+                transition={{ duration: 0.5, ease: "easeInOut" }}
+                className="relative z-10"
+              >
+                {theme === 'dark' ? (
+                  <FiSun size={20} className="text-yellow-400" />
+                ) : (
+                  <FiMoon size={20} className="text-indigo-600" />
+                )}
+              </motion.div>
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-orange-500 opacity-0 group-hover:opacity-20 transition-opacity"
+              />
             </motion.button>
             <motion.a
               href="#/contact"
@@ -182,9 +195,18 @@ const Navbar = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
-                className="flex-1 py-3 glass rounded-xl text-cyan-400 hover:text-white transition-colors flex items-center justify-center gap-2"
+                className="flex-1 py-3 glass rounded-xl transition-colors flex items-center justify-center gap-2 group"
               >
-                {theme === 'dark' ? <><FiSun size={20} /> Light</> : <><FiMoon size={20} /> Dark</>}
+                <motion.div
+                  animate={{ rotate: theme === 'dark' ? 0 : 180 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  {theme === 'dark' ? (
+                    <><FiSun size={20} className="text-yellow-400" /> <span className="text-white">Light Mode</span></>
+                  ) : (
+                    <><FiMoon size={20} className="text-indigo-600" /> <span className="text-gray-800">Dark Mode</span></>
+                  )}
+                </motion.div>
               </motion.button>
             </div>
             

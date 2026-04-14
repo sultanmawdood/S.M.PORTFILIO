@@ -2,7 +2,7 @@ import React, { Suspense } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { motion } from 'framer-motion'
 import Scene from './3d/Scene'
-import heroImage from '../images/portfilo.png'
+import heroImage from '../images/rabot.jfif'
 
 const Hero3D = () => {
   return (

@@ -27,7 +27,7 @@ const Hero3D = () => {
               transition={{ duration: 1 }}
               className="text-6xl md:text-8xl font-bold mb-6"
             >
-              <div className="text-cyan-400 text-6xl md:text-8xl font-bold mb-4">Frontend</div>
+              <div className="text-cyan-400 text-6xl md:text-8xl font-bold mb-4">Fullstack</div>
               <div className="text-white text-6xl md:text-8xl font-bold">Developer</div>
             </motion.h1>
 
@@ -37,7 +37,7 @@ const Hero3D = () => {
               transition={{ duration: 1, delay: 0.3 }}
               className="text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl mx-auto lg:mx-0"
             >
-              Passionate Frontend Developer specializing in React, Three.js, and modern web technologies. 
+              Passionate fullstack Developer specializing in React, Three.js, and modern web technologies. 
               Creating stunning, interactive digital experiences that captivate users and drive results.
             </motion.p>
 

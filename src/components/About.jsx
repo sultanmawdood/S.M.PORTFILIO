@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import { FiAward, FiTarget, FiHeart, FiCode } from 'react-icons/fi'
 import { FaGraduationCap, FaBriefcase, FaReact, FaBook, FaCube, FaLaptopCode, FaCodeBranch } from 'react-icons/fa'
 import { SiHtml5, SiCss3, SiJavascript, SiReact, SiThreedotjs } from 'react-icons/si'
-import profileImg from '../images/portfilo.png'
+import profileImg from '../images/rabot.png'
 
 const About = () => {
   const achievements = [
